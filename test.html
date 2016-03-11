@@ -15,7 +15,7 @@
     				success: function(data) { 
     					var parsedJson = $.parseJSON(data);
     					console.log(parsedJson.quote);
-    					$("#test").text(parsedJson.quote); 
+    					$("#gtest").text(parsedJson.quote); 
     				},
     				error: function(err) { alert(err); },
     				beforeSend: function(xhr) {
