@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Quote Machine</title>
+	<link rel="stylesheet" type="text/css" href=style.css>
+	<script src="assets/jquery-2.2.1.min.js"></script>
+	<script src="assets/jquery-ui.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			var colors = ["#7FFFD4", "#0000FF", "#DC143C" ,"#9932CC"];
+			$("#quoteButton").click(function(event) {
+				var randomColor = getRandomInt(0,colors.length);
+				$( "body" ).animate({
+					backgroundColor: colors[randomColor]
+				},1000);
+			});
+
+			
+		})
+
+		function getRandomInt(min, max){
+			return Math.floor(Math.random() * (max-min)) + min;
+		}
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div id = "quoteBox">
+			<div id = "quote">
+				<p>Quothe the raven, nevermore!</p>
+			</div>
+			<div id = "author">	
+				<h3>- Author</h3>
+			</div>
+			<div id = "controls">
+				<button id = "quoteButton">New Quote</button>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
