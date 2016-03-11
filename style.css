@@ -19,11 +19,10 @@ body{
 	margin-right: auto;
 	background-color: white;
 	width: 500px;
-	height: 300px;
+	height: 250px;
 }
 
 #quote{
-	background-color: red;
 	height: 65%;
 	width: 100%;
 	text-align: center;
@@ -31,11 +30,12 @@ body{
 
 #quote p{
 	padding-top: 25px;
+	padding-left: 10px;
+	padding-right: 10px;
 	font-size: 25px;
 }
 
 #author{
-	background-color: blue;
 	height: 15%;
 	width: 100%;
 	text-align: right;
@@ -49,15 +49,17 @@ body{
 
 #controls{
 	text-align: right;
-	background-color: green;
 	height: 20%;
 	width: 100%;
 }
 
 #quoteButton{
+	color:#fff;
+	background-color:gray;
 	margin-top: 20px;
 	margin-right: 15px;
-
+	outline:none;
+	border:none;
 	display: inline-block;
 }
 

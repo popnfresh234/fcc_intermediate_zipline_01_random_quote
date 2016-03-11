@@ -7,15 +7,50 @@
 	<script src="assets/jquery-ui.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			var colors = ["#7FFFD4", "#0000FF", "#DC143C" ,"#9932CC"];
+			var colors = ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
 			$("#quoteButton").click(function(event) {
-				var randomColor = getRandomInt(0,colors.length);
-				$( "body" ).animate({
-					backgroundColor: colors[randomColor]
-				},1000);
+
+
+
+				$.ajax({
+				url: 'https://andruxnet-random-famous-quotes.p.mashape.com/', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
+				type: 'GET', // The HTTP Method
+				data: {}, // Additional parameters here
+				datatype: 'json',
+				success: function(data) { 
+
+
+
+					var parsedJson = $.parseJSON(data);
+					console.log(parsedJson);
+					$("#quoteText").text(parsedJson.quote);
+					$("#authorText").text(parsedJson.author);
+
+										var randomColor = getRandomInt(0,colors.length);
+					$( "body" ).animate({
+						backgroundColor: colors[randomColor]
+					},1000);
+
+					$( "#quoteText" ).animate({
+						color: colors[randomColor]
+					},1000);
+
+										$( "#authorText" ).animate({
+						color: colors[randomColor]
+					},1000);
+
+															$( "#quoteButton" ).animate({
+						backgroundColor: colors[randomColor]
+					},1000);
+				},
+				error: function(err) { alert(err); },
+				beforeSend: function(xhr) {
+				xhr.setRequestHeader("X-Mashape-Authorization", "MFcI1LnX7BmshsGhV8r0qD6azQZIp12PnQPjsn5PxttBfxkkPq"); // Enter here your Mashape key
+			}
+		});
 			});
 
-			
+
 		})
 
 		function getRandomInt(min, max){
@@ -27,10 +62,10 @@
 	<div id="container">
 		<div id = "quoteBox">
 			<div id = "quote">
-				<p>Quothe the raven, nevermore!</p>
+				<p id ="quoteText">Quothe the raven, nevermore!</p>
 			</div>
 			<div id = "author">	
-				<h3>- Author</h3>
+				<h3 id = "authorText">- Author</h3>
 			</div>
 			<div id = "controls">
 				<button id = "quoteButton">New Quote</button>
