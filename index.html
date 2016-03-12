@@ -7,26 +7,29 @@
 	<script src="assets/jquery-ui.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			var colors = ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
+
+			getQuote();
 			$("#quoteButton").click(function(event) {
+				getQuote();
+			});
+		})
 
 
 
-				$.ajax({
-				url: 'https://andruxnet-random-famous-quotes.p.mashape.com/', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
-				type: 'GET', // The HTTP Method
+		function getQuote(){
+			var colors = ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
+			$.ajax({
+				url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
+				type: 'POST', // The HTTP Method
 				data: {}, // Additional parameters here
 				datatype: 'json',
 				success: function(data) { 
-
-
-
 					var parsedJson = $.parseJSON(data);
 					console.log(parsedJson);
 					$("#quoteText").text(parsedJson.quote);
 					$("#authorText").text(parsedJson.author);
 
-										var randomColor = getRandomInt(0,colors.length);
+					var randomColor = getRandomInt(0,colors.length);
 					$( "body" ).animate({
 						backgroundColor: colors[randomColor]
 					},1000);
@@ -35,25 +38,22 @@
 						color: colors[randomColor]
 					},1000);
 
-										$( "#authorText" ).animate({
+					$( "#authorText" ).animate({
 						color: colors[randomColor]
 					},1000);
 
-															$( "#quoteButton" ).animate({
+					$( "#quoteButton" ).animate({
 						backgroundColor: colors[randomColor]
 					},1000);
 				},
 				error: function(err) { alert(err); },
 				beforeSend: function(xhr) {
-				xhr.setRequestHeader("X-Mashape-Authorization", "MFcI1LnX7BmshsGhV8r0qD6azQZIp12PnQPjsn5PxttBfxkkPq"); // Enter here your Mashape key
-			}
-		});
+				xhr.setRequestHeader("X-Mashape-Authorization", "b5ma4J7J4AmshWuiPxCQROduCfIVp16U7Z8jsnPjq983Fe7ebF"); // Enter here your Mashape key
+				}
 			});
+		}
 
-
-		})
-
-		function getRandomInt(min, max){
+				function getRandomInt(min, max){
 			return Math.floor(Math.random() * (max-min)) + min;
 		}
 	</script>
@@ -62,10 +62,10 @@
 	<div id="container">
 		<div id = "quoteBox">
 			<div id = "quote">
-				<p id ="quoteText">Quothe the raven, nevermore!</p>
+				<p id ="quoteText"></p>
 			</div>
 			<div id = "author">	
-				<h3 id = "authorText">- Author</h3>
+				- <span id = "authorText"></span>
 			</div>
 			<div id = "controls">
 				<button id = "quoteButton">New Quote</button>

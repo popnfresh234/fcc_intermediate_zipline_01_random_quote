@@ -14,12 +14,13 @@ body{
 }
 
 #quoteBox{
+	border-radius: 3px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: white;
 	width: 500px;
-	height: 250px;
+
 }
 
 #quote{
@@ -38,12 +39,12 @@ body{
 #author{
 	height: 15%;
 	width: 100%;
+	margin-top: 20px;
 	text-align: right;
 
 }
 
-#author h3 {
-	padding-top: 10px;
+#authorText {
 	padding-right: 20px;
 }
 
@@ -54,9 +55,12 @@ body{
 }
 
 #quoteButton{
+	border-radius: 3px;
 	color:#fff;
 	background-color:gray;
 	margin-top: 20px;
+	padding: 8px;
+	margin-bottom: 20px;
 	margin-right: 15px;
 	outline:none;
 	border:none;
